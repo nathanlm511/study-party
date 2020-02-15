@@ -1,10 +1,7 @@
 // /client/App.js
 import React, { Component } from 'react';
 import axios from 'axios';
-
-import Login from './Login';
-
-import {Route} from 'react-router-dom'
+import GoogleMap from './GoogleMap';
 
 
 class Test extends Component {
@@ -73,7 +70,7 @@ class Test extends Component {
     parseInt(idTodelete);
     let objIdToDelete = null;
     this.state.data.forEach((dat) => {
-      if (dat.id == idTodelete) {
+      if (dat.id === idTodelete) {
         objIdToDelete = dat._id;
       }
     });
@@ -91,7 +88,7 @@ class Test extends Component {
     let objIdToUpdate = null;
     parseInt(idToUpdate);
     this.state.data.forEach((dat) => {
-      if (dat.id == idToUpdate) {
+      if (dat.id === idToUpdate) {
         objIdToUpdate = dat._id;
       }
     });
@@ -169,9 +166,10 @@ class Test extends Component {
           </button>
         </div>
 
-        <iframe width="600" height="450"
+        {/* <iframe width="600" height="450"
 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCaqVioGFgalHGpuZfmtB-_v2-UU2vkE3s
-&q=Space+Needle,Seattle+WA"></iframe>
+&q=Space+Needle,Seattle+WA"></iframe> */}
+<GoogleMap/>
       </div>
     );
   }
