@@ -13,10 +13,12 @@ const User = require("../../models/User");
 // @desc Register user
 // @access Public
 router.post("/register", (req, res) => {
+    console.log("arived at server");
     // Form validation
   const { errors, isValid } = validateRegisterInput(req.body);
   // Check validation
     if (!isValid) {
+        console.log("register error");
       return res.status(400).json(errors);
     }
   User.findOne({ email: req.body.email }).then(user => {

@@ -1,53 +1,57 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from 'axios';
-
-class Login extends Component {
+class Register extends Component {
   constructor() {
     super();
     this.state = {
+      name: "",
       email: "",
       password: "",
+      password2: "",
       errors: {}
     };
   }
-
 onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
+toLogin = () => {
+  window.location = "/login";
+}
 onSubmit = e => {
     e.preventDefault();
-const userData = {
+const newUser = {
+      name: this.state.name,
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      password2: this.state.password2
     };
-    axios.post('http://localhost:3001/api/users/login', userData)
-    .then(res => {        
-        window.localStorage.setItem("token", JSON.stringify(userData));
-        window.location = "/test";
-    }) // re-direct to login on successful register
+    axios.post('http://localhost:3001/api/users/register', newUser)
+    .then(res => window.location = "/login") // re-direct to login on successful register
     .catch(err => console.log("register error"));
-console.log(userData);
+    console.log(newUser);
   };
 render() {
     const { errors } = this.state;
 return (
       <div className="container">
-        <div style={{ marginTop: "4rem" }} className="row">
+        <div className="row">
           <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
-            </Link>
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h4>
-                <b>Login</b> below
+                <b>Register</b> below
               </h4>
-              <p className="grey-text text-darken-1">
-                Don't have an account? <Link to="/register">Register</Link>
-              </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.name}
+                  error={errors.name}
+                  id="name"
+                  type="text"
+                />
+                <label htmlFor="name">Name</label>
+              </div>
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
@@ -68,6 +72,16 @@ return (
                 />
                 <label htmlFor="password">Password</label>
               </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.password2}
+                  error={errors.password2}
+                  id="password2"
+                  type="password"
+                />
+                <label htmlFor="password2">Confirm Password</label>
+              </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
                   style={{
@@ -79,14 +93,26 @@ return (
                   type="submit"
                   className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 >
-                  Login
+                  Sign up
                 </button>
               </div>
             </form>
+            <button
+                  style={{
+                    width: "150px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem"
+                  }}
+                  onClick={this.toLogin}
+                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                >
+                  Already registered
+                </button>
           </div>
         </div>
       </div>
     );
   }
 }
-export default Login;
+export default Register;
