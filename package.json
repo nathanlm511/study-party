@@ -1,0 +1,36 @@
+{
+  "name": "Study-Party",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt": "^3.0.8",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
+    "express": "^4.17.1",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "react-router-dom": "^5.1.2",
+    "validator": "^12.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "concurrently \"cd backend && node server.js\" \"cd study-party && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gulnazsayed/Study-Party.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gulnazsayed/Study-Party/issues"
+  },
+  "homepage": "https://github.com/gulnazsayed/Study-Party#readme"
+}
