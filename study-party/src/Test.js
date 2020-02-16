@@ -1,9 +1,15 @@
 // /client/App.js
 import React, { Component } from 'react';
 import axios from 'axios';
+<<<<<<< HEAD
 
+=======
+import GoogleMap from './GoogleMap';
+import { Icon, Popup, Button } from 'semantic-ui-react'
+>>>>>>> 8104b8ff57fed502317aee05997110a1cb69c1f0
 
 class Test extends Component {
+
   // initialize our state
   state = {
     data: [],
@@ -75,7 +81,7 @@ class Test extends Component {
     parseInt(idTodelete);
     let objIdToDelete = null;
     this.state.data.forEach((dat) => {
-      if (dat.id == idTodelete) {
+      if (dat.id === idTodelete) {
         objIdToDelete = dat._id;
       }
     });
@@ -93,7 +99,7 @@ class Test extends Component {
     let objIdToUpdate = null;
     parseInt(idToUpdate);
     this.state.data.forEach((dat) => {
-      if (dat.id == idToUpdate) {
+      if (dat.id === idToUpdate) {
         objIdToUpdate = dat._id;
       }
     });
@@ -196,9 +202,10 @@ class Test extends Component {
           </button>
         </div>
 
-        <iframe width="600" height="450"
+        {/* <iframe width="600" height="450"
 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCaqVioGFgalHGpuZfmtB-_v2-UU2vkE3s
-&q=Space+Needle,Seattle+WA"></iframe>
+&q=Space+Needle,Seattle+WA"></iframe> */}
+<GoogleMap/>
       </div>
     );
   }
