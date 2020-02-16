@@ -1,12 +1,7 @@
 // /client/App.js
 import React, { Component } from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
-
-=======
 import GoogleMap from './GoogleMap';
-import { Icon, Popup, Button } from 'semantic-ui-react'
->>>>>>> 8104b8ff57fed502317aee05997110a1cb69c1f0
 
 class Test extends Component {
 
@@ -98,15 +93,14 @@ class Test extends Component {
   updateDB = (idToUpdate, updateToApply) => {
     let objIdToUpdate = null;
     parseInt(idToUpdate);
-    this.state.data.forEach((dat) => {
-      if (dat.id === idToUpdate) {
+    this.state.data.forEach((dat) => {;
+      if (dat.id == idToUpdate) {
         objIdToUpdate = dat._id;
       }
     });
-
     axios.post('http://localhost:3001/api/updateLocation', {
       id: objIdToUpdate,
-      update: { message: updateToApply },
+      update: { partying: updateToApply },
     });
   };
 
@@ -132,7 +126,7 @@ class Test extends Component {
                   <span style={{ color: 'gray' }}> long: </span> {dat.long} <br />
                   <span style={{ color: 'gray' }}> class: </span> {dat.class} <br />
                   <span style={{ color: 'gray' }}> cap: </span> {dat.cap} <br />
-                  <span style={{ color: 'gray' }}> partying: </span>
+                  <span style={{ color: 'gray' }}> partying: </span> {dat.partying}
                 </li>
               ))}
         </ul>
@@ -201,11 +195,6 @@ class Test extends Component {
             UPDATE
           </button>
         </div>
-
-        {/* <iframe width="600" height="450"
-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCaqVioGFgalHGpuZfmtB-_v2-UU2vkE3s
-&q=Space+Needle,Seattle+WA"></iframe> */}
-<GoogleMap/>
       </div>
     );
   }

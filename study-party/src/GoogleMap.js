@@ -1,6 +1,8 @@
+/*
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import { Icon } from 'semantic-ui-react'
+import { Icon, Popup, Button } from 'semantic-ui-react';
+import apiKey from '../../config';
 // import APIKey from './APIKey';
 
 const boxStyle = {
@@ -128,6 +130,8 @@ class PartyMap extends Component {
     this.props.removeFacilityMapPosition()
   }
 
+
+  
   render() {
     
     return (
@@ -158,7 +162,45 @@ class PartyMap extends Component {
       </GoogleMapReact>
     );
   }
+  
+ render() {
+  console.log(apiKey.API_KEY)
+  let googleMapLocation = "https://maps.google.com/?q=" + this.props.lat + ", " + this.props.lng
+  let windowGoogleMap = `window.location= + ${googleMapLocation}`
+
+  const setCenter = this.props.currentFacilityPosition === "" || this.props.currentFacilityPosition === undefined ? (this.state.center) : (this.props.currentFacilityPosition)
+
+  const setZoom = this.props.currentFacilityZoom === "" || this.props.currentFacilityZoom === undefined ? (this.props.zoom) : (this.props.currentFacilityZoom)
+
+  const infoBox = this.state.hover === true ? <InfoBox lat={this.state.lat} lng={this.state.lng} party={this.state.facilityName} googleMapLocation={googleMapLocation} /> : null
+
+  const partyPins = this.props.Parties.map((party, index) => {
+
+    if (party.latitude === null || party.longitude === null){
+      return null
+    } else{
+      return <PartyPin style={{width: '50px', height: '50px'}} key={index} onChildMouseEnter={this.onChildMouseEnter} onChildMouseLeave={this.onChildMouseLeave} party={party} hover={this.state.hover} lat={party.latitude} lng={party.longitude} />
+    }
+  })
+  return (
+    <div style={{ height: '100vh', width: '100%' }}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "INSERT APIKEY" }}
+        defaultCenter={this.props.center}
+        defaultZoom={this.props.zoom}
+      >
+        { <Marker
+          lat={37.2274}
+          lng={-80.4222}
+          color={'red'}
+        /> }
+
+      </GoogleMapReact>
+    </div>
+  );
 }
+}
+
 
   // static defaultProps = {
   //   center: {
@@ -168,43 +210,7 @@ class PartyMap extends Component {
   //   zoom: 16
   // };
  
-  render() {
-    console.log(apiKey.API_KEY)
-    let googleMapLocation = "https://maps.google.com/?q=" + this.props.lat + ", " + this.props.lng
-    let windowGoogleMap = `window.location= + ${googleMapLocation}`
-
-    const setCenter = this.props.currentFacilityPosition === "" || this.props.currentFacilityPosition === undefined ? (this.state.center) : (this.props.currentFacilityPosition)
-
-    const setZoom = this.props.currentFacilityZoom === "" || this.props.currentFacilityZoom === undefined ? (this.props.zoom) : (this.props.currentFacilityZoom)
-
-    const infoBox = this.state.hover === true ? <InfoBox lat={this.state.lat} lng={this.state.lng} party={this.state.facilityName} googleMapLocation={googleMapLocation} /> : null
-
-    const partyPins = this.props.Parties.map((party, index) => {
-
-      if (party.latitude === null || party.longitude === null){
-        return null
-      } else{
-        return <PartyPin style={{width: '50px', height: '50px'}} key={index} onChildMouseEnter={this.onChildMouseEnter} onChildMouseLeave={this.onChildMouseLeave} party={party} hover={this.state.hover} lat={party.latitude} lng={party.longitude} />
-      }
-    })
-    return (
-      <div style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: "INSERT APIKEY" }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
-        >
-          {/* <Marker
-            lat={37.2274}
-            lng={-80.4222}
-            color={'red'}
-          /> */}
-
-        </GoogleMapReact>
-      </div>
-    );
-  }
-}
+ 
 
 const mapStateToProps = (state) => {
   return {
@@ -216,3 +222,4 @@ const mapStateToProps = (state) => {
 
 //export default PartyMap;
 export default connect(mapStateToProps, { removePartyMapZoom, removePartyMapPosition })(PartyMap);
+*/
