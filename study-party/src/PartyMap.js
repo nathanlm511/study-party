@@ -77,7 +77,9 @@ class PartyMap extends Component {
       }
 
       getChild(array) {
+        console.log(this.state.classes);
         this.setState({classes: array});
+        console.log(this.state.classes);
       }
 
 
@@ -161,7 +163,10 @@ class PartyMap extends Component {
                   <button onClick={this.cancel} style={{backgroundColor: "#0B10F", color: "black", padding: "10px 20px", textAlign: "center", margin: "4px 2px"}}>Cancel</button>
                 </div>
               </InfoWindow>
-              {this.state.data.map
+              {this.state.data.filter((e) => 
+                !this.state.classes.includes(e.class)
+              )
+              .map
               ((dat) => (
                 <Marker key={dat.lat}
                 onLoad={this.onLoad}
