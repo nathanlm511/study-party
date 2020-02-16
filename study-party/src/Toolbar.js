@@ -23,7 +23,14 @@ class Toolbar extends Component {
         else {
             this.state.classes = this.state.classes.filter(e => e !== i);
         }
-        this.props.getChild(this.state.classes);
+        let arr = [];
+        let x;
+        for (x = 0; x < this.state.classes.length; x++) {
+            let index = this.state.classes[x];
+            arr.push(this.classes[index]);
+        }
+        console.log(arr);
+        this.props.getChild(arr);
     }
 
     changeBorder = (i) => (e) => {

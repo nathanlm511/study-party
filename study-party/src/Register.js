@@ -15,7 +15,7 @@ onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
 toLogin = () => {
-  window.location = "/profile";
+  window.location = "/login";
 }
 onSubmit = e => {
     e.preventDefault();
