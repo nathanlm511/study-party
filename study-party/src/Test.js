@@ -2,9 +2,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import GoogleMap from './GoogleMap';
-
+import { Icon, Popup, Button } from 'semantic-ui-react'
 
 class Test extends Component {
+
   // initialize our state
   state = {
     data: [],
