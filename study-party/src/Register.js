@@ -26,14 +26,14 @@ const newUser = {
       password2: this.state.password2
     };
     axios.post('http://localhost:3001/api/users/register', newUser)
-    .then(res => window.location = "/profile") // re-direct to login on successful register
+    .then(res => window.location = "/login") // re-direct to login on successful register
     .catch(err => console.log("register error"));
     console.log(newUser);
   };
 render() {
     const { errors } = this.state;
 return (
-      <div className="container">
+      <div>
         <div className="row">
           <div className="col s8 offset-s2">
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
@@ -95,20 +95,24 @@ return (
                 >
                   Sign up
                 </button>
-              </div>
-            </form>
-            <button
+                <button
                   style={{
                     width: "150px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
-                    marginTop: "1rem"
+                    marginTop: "1rem",
+                    marginLeft: "100px"
                   }}
                   onClick={this.toLogin}
                   className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 >
-                  Already registered
+                  Log in
                 </button>
+                
+              </div>
+              
+            </form>
+            
           </div>
         </div>
       </div>

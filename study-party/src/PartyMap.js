@@ -17,7 +17,8 @@ class PartyMap extends Component {
             windowLoc: {lat: -100, lng: 100},
             cap: 1,
             partying: 1,
-            id: 0
+            id: 0,
+            classes: ["Intro to Python", "General Chemistry", "Data Structures"]
         };
     }
 
@@ -83,11 +84,11 @@ class PartyMap extends Component {
       };
 
       dict = {
-          "Computer Science": 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png',
-          "Math": 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png',
-          "Science": 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-          "English": 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
-          "History": 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
+          "Intro to Python": 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png',
+          "General Chemistry": 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png',
+          "Data Structures": 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+          "Vector Geometry": 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png',
+          "Engineering Physics": 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png'
       }
 
 
@@ -150,9 +151,10 @@ class PartyMap extends Component {
                 options={{disableAutoPan: true}}
               >
                 <div style={this.divStyle}>
-                  <button onClick={this.party}>PARTY!</button>
-                  <button onClick={this.cancel}>Cancel</button>
+                  <text>Join this Party?</text>
                   <h1>{this.state.partying} / {this.state.cap}</h1>
+                  <button onClick={this.party} style={{backgroundColor: "#0B10F", border: "none", color: "black", padding: "10px 20px", textAlign: "center", margin: "4px 2px"}}>LET'S PARTY!</button>
+                  <button onClick={this.cancel} style={{backgroundColor: "#0B10F", border: "none", color: "black", padding: "10px 20px", textAlign: "center", margin: "4px 2px"}}>Cancel</button>
                 </div>
               </InfoWindow>
               {this.state.data.map

@@ -8,6 +8,10 @@ const colors = ["#993365", "#FF0066", "#008001", "#FE9900", "#FE5B00"] //add two
 
 class Toolbar extends Component {
 
+    startParty = () => {
+        window.location = "/party";
+    }
+
     classes = ["Intro to Python", "General Chemistry", "Data Structures", "Vector Geometry", "Engineering Physics"]; //get array of classes from database
     
     render() {
@@ -37,7 +41,7 @@ class Toolbar extends Component {
                 </div>
                 <div className='bottom-container' style= {{alignItems: "center", padding: "36px"}}>
                     <div style={{alignItems: "center", marginBottom: "10px", textAlign: "center"}}>
-                        <FontAwesomeIcon icon={faUsers} style={{backgroundColor: "white", color: "black", borderRadius: "50%", fontSize: "100px", padding: "5px"}}/>
+                        <FontAwesomeIcon onClick={this.startParty}icon={faUsers} style={{backgroundColor: "white", color: "black", borderRadius: "50%", fontSize: "100px", padding: "5px"}}/>
                     </div>
                     <div style={{fontSize: "36px", lineHeight: "44px", width: "100%", textAlign: "center"}}>START A PARTY!</div>
                 </div>
