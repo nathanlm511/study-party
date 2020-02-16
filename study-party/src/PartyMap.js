@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { GoogleMap, LoadScript, InfoWindow } from '@react-google-maps/api'
 import { Marker } from '@react-google-maps/api';
 import { Modal, Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import './GoogleMap.css';
+import './PartyMap.css';
 import axios from 'axios';
+import Toolbar from "./Toolbar";
 
-class GoogleMap extends Component {
+class PartyMap extends Component {
 
     constructor() {
         super();
@@ -166,9 +167,10 @@ class GoogleMap extends Component {
               
         </GoogleMap>
       </LoadScript>
+      <Toolbar></Toolbar>
       </div>
      )
   }
 }
 
-export default GoogleMap;
+export default PartyMap;

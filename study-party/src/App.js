@@ -6,7 +6,7 @@ import Register from './Register';
 import Test from './Test';
 import Profile from './Profile';
 import Toolbar from './Toolbar';
-import GoogleMapNathan from './GoogleMapNathan';
+import PartyMap from './PartyMap';
 
 
 import {Route} from 'react-router-dom'
@@ -38,7 +38,7 @@ class App extends Component {
           <Route path="/toolbar" component={Toolbar} />
         </div>
         <div className="height">
-          <Route path="/googleMapNathan" component={GoogleMapNathan} />
+          <Route path="/partyMap" component={PartyMap} />
         </div>
       </div>
     );
