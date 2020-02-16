@@ -1,12 +1,6 @@
 // /client/App.js
 import React, { Component } from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
-
-=======
-import GoogleMap from './GoogleMap';
-import { Icon, Popup, Button } from 'semantic-ui-react'
->>>>>>> 8104b8ff57fed502317aee05997110a1cb69c1f0
 
 class Test extends Component {
 
@@ -205,7 +199,6 @@ class Test extends Component {
         {/* <iframe width="600" height="450"
 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCaqVioGFgalHGpuZfmtB-_v2-UU2vkE3s
 &q=Space+Needle,Seattle+WA"></iframe> */}
-<GoogleMap/>
       </div>
     );
   }
