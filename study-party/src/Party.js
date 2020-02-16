@@ -28,7 +28,8 @@ class Party extends Component {
         
         axios.post('http://localhost:3001/api/putLocation', newLocation)
         .then(res => {
-            window.location='./partying'
+            window.localStorage.setItem("id", res.data.id);
+            window.locaion = './partying'
         }) // re-direct to login on successful register
         .catch(err => console.log("register error"));
         console.log(newLocation);

@@ -68,10 +68,10 @@ class Toolbar extends Component {
                         <span className="span-class" style={{width: "100%", textAlign: "center", fontSize: "36px", lineHeight: "44px"}}>MY CLASSES</span> 
                     </div>
                     {this.classes.map((str, i) => 
-                       <div className="class" key = {i} style={{backgroundColor: colors[i], borderColor: this.state.border, borderWidth: "5px"}} onClick={this.toggleClass(i)}>
+                       <div className="class" key = {i} style={{backgroundColor: colors[i], borderColor: this.state.border, borderWidth: "5px"}} >
                             {/* <input type="checkbox" value={i} checked={true} onChange={() => {this.state.checked ? category.splice(category.indexOf(str)) : category.concat(str); this.state.checked = !this.state.checked}}/> */}
                             <label htmlFor={i} className="label">
-                                <input type="checkbox" id={i} className="browser-default"/>
+                                <input type="checkbox" id={i} className="browser-default" onClick={this.toggleClass(i)} defaultChecked/>
                                 <span></span>
                             </label>
                             <span className="span-class" style={{fontSize: "36px", lineHeight: "44px"}}>{str}</span>                     
