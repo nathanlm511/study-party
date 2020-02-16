@@ -157,8 +157,8 @@ class PartyMap extends Component {
                 <div style={this.divStyle}>
                   <text>Join this Party?</text>
                   <h1>{this.state.partying} / {this.state.cap}</h1>
-                  <button onClick={this.party} style={{backgroundColor: "#0B10F", border: "none", color: "black", padding: "10px 20px", textAlign: "center", margin: "4px 2px"}}>LET'S PARTY!</button>
-                  <button onClick={this.cancel} style={{backgroundColor: "#0B10F", border: "none", color: "black", padding: "10px 20px", textAlign: "center", margin: "4px 2px"}}>Cancel</button>
+                  <button onClick={this.party} style={{backgroundColor: "#0B10F", color: "black", padding: "10px 20px", textAlign: "center", margin: "4px 2px"}}>LET'S PARTY!</button>
+                  <button onClick={this.cancel} style={{backgroundColor: "#0B10F", color: "black", padding: "10px 20px", textAlign: "center", margin: "4px 2px"}}>Cancel</button>
                 </div>
               </InfoWindow>
               {this.state.data.map
