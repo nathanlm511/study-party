@@ -1,24 +1,37 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 class Profile extends Component {
     classes = ["CS", "Math", "Science", "Gym", "Lunch"];
 
     constructor(props) {
         super(props);
-        this.state = {value: 'coconut'};
-    
+        this.state = {value: [""]};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
-    
-      handleChange(event) {
-        this.setState({value: event.target.value});
+
+      handleChange (e) {
+        var options = e.target.options;
+        var value = [];
+        for (var i = 0, l = options.length; i < l; i++) {
+            if (options[i].selected) {
+            value.push(options[i].value);
+            }
+        }
+        this.setState({value: value});
+
+        
       }
-    
+
       handleSubmit(event) {
-        alert('Your favorite flavor is: ' + this.state.value);
+        alert(this.state.value);
         event.preventDefault();
+        
+        window.localStorage.setItem("classes", JSON.stringify(this.state.value));
+        window.location = "/test";
+
       }
     
       render() {
@@ -32,9 +45,10 @@ class Profile extends Component {
         );
         
         return (
-            <form noValidate onSubmit={this.onSubmit}>
+            <form noValidate onSubmit={this.handleSubmit}>
               <div class="input-field col s12">
                 <select className="browser-default" 
+                onChange={this.handleChange}
                 style={{ 
                     height: "150px"
                 }}

@@ -2,17 +2,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Login from './Login';
-
-import {Route} from 'react-router-dom'
-
 
 class Test extends Component {
   // initialize our state
   state = {
     data: [],
     id: 0,
-    message: null,
+    lat: null,
+    long: null, 
+    cap: null,
+    class: null,
     intervalIsSet: false,
     idToDelete: null,
     idToUpdate: null,
@@ -47,23 +46,26 @@ class Test extends Component {
   // our first get method that uses our backend api to
   // fetch data from our data base
   getDataFromDb = () => {
-    fetch('http://localhost:3001/api/getData')
+    fetch('http://localhost:3001/api/getLocation')
       .then((data) => data.json())
       .then((res) => this.setState({ data: res.data }));
   };
 
   // our put method that uses our backend api
   // to create new query into our data base
-  putDataToDB = (message) => {
+  putDataToDB = (lat, long, cap, Class) => {
     let currentIds = this.state.data.map((data) => data.id);
     let idToBeAdded = 0;
     while (currentIds.includes(idToBeAdded)) {
       ++idToBeAdded;
     }
 
-    axios.post('http://localhost:3001/api/putData', {
+    axios.post('http://localhost:3001/api/putLocation', {
       id: idToBeAdded,
-      message: message,
+      lat: lat,
+      long: long, 
+      Class: Class,
+      cap: cap
     });
   };
 
@@ -78,7 +80,7 @@ class Test extends Component {
       }
     });
 
-    axios.delete('http://localhost:3001/api/deleteData', {
+    axios.delete('http://localhost:3001/api/deleteLocation', {
       data: {
         id: objIdToDelete,
       },
@@ -96,7 +98,7 @@ class Test extends Component {
       }
     });
 
-    axios.post('http://localhost:3001/api/updateData', {
+    axios.post('http://localhost:3001/api/updateLocation', {
       id: objIdToUpdate,
       update: { message: updateToApply },
     });
@@ -118,21 +120,46 @@ class Test extends Component {
           {data.length <= 0
             ? 'NO DB ENTRIES YET'
             : data.map((dat) => (
-                <li style={{ padding: '10px' }} key={data.message}>
+                <li style={{ padding: '10px' }} key={data.lat}>
                   <span style={{ color: 'gray' }}> id: </span> {dat.id} <br />
-                  <span style={{ color: 'gray' }}> data: </span>
-                  {dat.message}
+                  <span style={{ color: 'gray' }}> lat: </span> {dat.lat} <br />
+                  <span style={{ color: 'gray' }}> long: </span> {dat.long} <br />
+                  <span style={{ color: 'gray' }}> class: </span> {dat.class} <br />
+                  <span style={{ color: 'gray' }}> cap: </span> {dat.cap} <br />
+                  <span style={{ color: 'gray' }}> partying: </span>
                 </li>
               ))}
         </ul>
         <div style={{ padding: '10px' }}>
+          <label>lat</label>
           <input
             type="text"
-            onChange={(e) => this.setState({ message: e.target.value })}
+            onChange={(e) => this.setState({ lat: e.target.value })}
             placeholder="add something in the database"
             style={{ width: '200px' }}
           />
-          <button onClick={() => this.putDataToDB(this.state.message)}>
+          <label>long</label>
+          <input
+            type="text"
+            onChange={(e) => this.setState({ long: e.target.value })}
+            placeholder="add something in the database"
+            style={{ width: '200px' }}
+          />
+          <label>cap</label>
+          <input
+            type="text"
+            onChange={(e) => this.setState({ cap: e.target.value })}
+            placeholder="add something in the database"
+            style={{ width: '200px' }}
+          />
+          <label>class</label>
+          <input
+            type="text"
+            onChange={(e) => this.setState({ class: e.target.value })}
+            placeholder="add something in the database"
+            style={{ width: '200px' }}
+          />
+          <button onClick={() => this.putDataToDB(this.state.lat, this.state.long, this.state.cap, this.state.class)}>
             ADD
           </button>
         </div>

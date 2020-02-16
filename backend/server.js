@@ -3,7 +3,7 @@ const express = require('express');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const Data = require('./models/Data');
+const Location = require('./models/Location');
 
 const API_PORT = 3001;
 const app = express();
@@ -41,8 +41,8 @@ require("./config/passport")(passport);
 
 // this is our get method
 // this method fetches all available data in our database
-router.get('/getData', (req, res) => {
-  Data.find((err, data) => {
+router.get('/getLocation', (req, res) => {
+  Location.find((err, data) => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true, data: data });
   });
@@ -50,9 +50,9 @@ router.get('/getData', (req, res) => {
 
 // this is our update method
 // this method overwrites existing data in our database
-router.post('/updateData', (req, res) => {
+router.post('/updateLocation', (req, res) => {
   const { id, update } = req.body;
-  Data.findByIdAndUpdate(id, update, (err) => {
+  Location.findByIdAndUpdate(id, update, (err) => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true });
   });
@@ -60,9 +60,9 @@ router.post('/updateData', (req, res) => {
 
 // this is our delete method
 // this method removes existing data in our database
-router.delete('/deleteData', (req, res) => {
+router.delete('/deleteLocation', (req, res) => {
   const { id } = req.body;
-  Data.findByIdAndRemove(id, (err) => {
+  Location.findByIdAndRemove(id, (err) => {
     if (err) return res.send(err);
     return res.json({ success: true });
   });
@@ -70,20 +70,25 @@ router.delete('/deleteData', (req, res) => {
 
 // this is our create methid
 // this method adds new data in our database
-router.post('/putData', (req, res) => {
-  let data = new Data();
+router.post('/putLocation', (req, res) => {
+  let location = new Location();
 
-  const { id, message } = req.body;
+  const { id, lat, long, Class, cap } = req.body;
 
-  if ((!id && id !== 0) || !message) {
+  // VALIDATE INPUTS HERE
+  if ((!id && id !== 0)) {
     return res.json({
       success: false,
       error: 'INVALID INPUTS',
     });
   }
-  data.message = message;
-  data.id = id;
-  data.save((err) => {
+  location.id = id;
+  location.lat = lat;
+  location.long = long;
+  location.class = Class;
+  location.cap = cap;
+  location.partying = 0;
+  location.save((err) => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true });
   });

@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+}
+
+.text {
+    flex-grow: 1;
+}
+
+.class-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.label {
+    margin-left: 25px;
+}
+
+.span-class {
+    font-size: 50px;
+}
+
+.class {    
+    background-color: beige;
+    margin: 2px;
+    flex-direction: row;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.profile {
+    width: 30%;
+    height: 100%;
+    background-color: green;
+}
+
+.settings {
+    width: 30%;
+    height: 100%;
+    background-color: grey;
+}
+
+.bottom-container {
+    height: 20%;
+}
+
