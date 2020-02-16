@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import { faUserCircle, faUsers, faCog  } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Checkbox from '@material-ui/core/Checkbox';
-import CircleCheckedFilled from '@material-ui/icons/CheckCircle';
-import CircleUnchecked from '@material-ui/icons/RadioButtonUnchecked';
 import './Toolbar.css';
 
 const name = "Gulnaz" //pass in first name from database
@@ -11,11 +8,22 @@ const colors = ["#993365", "#FF0066", "#008001", "#FE9900", "#FE5B00"]
 var category = [];
 
 class Toolbar extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
+            classes: [],
             border: "black"
         }
+    }
+
+    toggleClass = (i) => (e) => {
+        if (!this.state.classes.includes(i)) {
+            this.state.classes.push(i);
+        }
+        else {
+            this.state.classes = this.state.classes.filter(e => e !== i);
+        }
+        this.props.getChild(this.state.classes);
     }
 
     changeBorder = (i) => (e) => {
@@ -49,12 +57,12 @@ class Toolbar extends Component {
                         <span className="span-class" style={{width: "100%", textAlign: "center", fontSize: "36px", lineHeight: "44px"}}>MY CLASSES</span> 
                     </div>
                     {this.classes.map((str, i) => 
-                       <div className="class" key = {i} style={{backgroundColor: colors[i], borderColor: this.state.border, borderWidth: "5px"}} onClick={this.changeBorder(i)}>
-                            <Checkbox
-                                icon={<CircleUnchecked />}
-                                checkedIcon={<CircleCheckedFilled />}
-                                label={str}
-                            />
+                       <div className="class" key = {i} style={{backgroundColor: colors[i], borderColor: this.state.border, borderWidth: "5px"}} onClick={this.toggleClass(i)}>
+                            {/* <input type="checkbox" value={i} checked={true} onChange={() => {this.state.checked ? category.splice(category.indexOf(str)) : category.concat(str); this.state.checked = !this.state.checked}}/> */}
+                            <label htmlFor={i} className="label">
+                                <input type="checkbox" id={i} className="browser-default"/>
+                                <span></span>
+                            </label>
                             <span className="span-class" style={{fontSize: "36px", lineHeight: "44px"}}>{str}</span>                     
                         </div>
                     )}

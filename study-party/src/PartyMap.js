@@ -17,7 +17,8 @@ class PartyMap extends Component {
             windowLoc: {lat: -100, lng: 100},
             cap: 1,
             partying: 1,
-            id: 0
+            id: 0,
+            classes: []
         };
     }
 
@@ -73,6 +74,10 @@ class PartyMap extends Component {
           clearInterval(this.state.intervalIsSet);
           this.setState({ intervalIsSet: null });
         }
+      }
+
+      getChild(array) {
+        this.setState({classes: array});
       }
 
 
@@ -167,7 +172,7 @@ class PartyMap extends Component {
               
         </GoogleMap>
       </LoadScript>
-      <Toolbar></Toolbar>
+      <Toolbar getChild={this.getChild.bind(this)}></Toolbar>
       </div>
      )
   }

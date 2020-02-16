@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add @material-ui/icons/CheckCircle
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add @material-ui/core/Radio
 
 PATH: 
   /anaconda3/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/anaconda3/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@material-ui%2ficons/CheckCircle: Request "https://registry.yarnpkg.com/@material-ui%2ficons/CheckCircle" returned a 405
+  Error: https://registry.yarnpkg.com/@material-ui%2fcore/Radio: Request "https://registry.yarnpkg.com/@material-ui%2fcore/Radio" returned a 405
       at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:66839:18)
       at Request.self.callback (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:140464:22)
       at Request.emit (events.js:203:13)
