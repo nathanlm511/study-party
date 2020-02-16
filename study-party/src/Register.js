@@ -26,7 +26,7 @@ const newUser = {
       password2: this.state.password2
     };
     axios.post('http://localhost:3001/api/users/register', newUser)
-    .then(res => window.location = "/login") // re-direct to login on successful register
+    .then(res => window.location = "/profile") // re-direct to login on successful register
     .catch(err => console.log("register error"));
     console.log(newUser);
   };
