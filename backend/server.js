@@ -89,8 +89,8 @@ router.post('/putLocation', (req, res) => {
   location.cap = cap;
   location.partying = 0;
   location.save((err) => {
-    if (err) return res.json({ success: false, error: err });
-    return res.json({ success: true });
+    if (err) return res.json({ success: false, error: err, id: id  });
+    return res.json({ success: true, id: id  });
   });
 });
 

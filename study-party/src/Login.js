@@ -24,7 +24,7 @@ const userData = {
     axios.post('http://localhost:3001/api/users/login', userData)
     .then(res => {        
         window.localStorage.setItem("token", JSON.stringify(userData));
-        window.location = "/test";
+        window.location = "/partymap";
     }) // re-direct to login on successful register
     .catch(err => console.log("register error"));
 console.log(userData);
@@ -32,10 +32,10 @@ console.log(userData);
 render() {
     const { errors } = this.state;
 return (
-      <div className="container">
+      <div>
         <div style={{ marginTop: "4rem" }} className="row">
           <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
+            <Link to="/register" className="btn-flat waves-effect">
               <i className="material-icons left">keyboard_backspace</i> Back to
               home
             </Link>

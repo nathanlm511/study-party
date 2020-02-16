@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 
 class Profile extends Component {
-    classes = ["CS", "Math", "Science", "Gym", "Lunch"];
+    classes = ["Python", "Chemistry", "Algorithims", "Geometry", "Physics", "History", "Lunch", "Economics", "English"];
 
     constructor(props) {
         super(props);
@@ -30,7 +30,7 @@ class Profile extends Component {
         event.preventDefault();
         
         window.localStorage.setItem("classes", JSON.stringify(this.state.value));
-        window.location = "/test";
+        window.location = "/login";
 
       }
     
@@ -50,7 +50,8 @@ class Profile extends Component {
                 <select className="browser-default" 
                 onChange={this.handleChange}
                 style={{ 
-                    height: "150px"
+                    height: "150px",
+                    fontSize: "20x"
                 }}
                 multiple>
                 <option value="" disabled>Choose your option</option>

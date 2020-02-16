@@ -7,6 +7,9 @@ import Test from './Test';
 import Profile from './Profile';
 import Toolbar from './Toolbar';
 import PartyMap from './PartyMap';
+import Party from './Party';
+import Partying from './Partying';
+
 
 
 import {Route} from 'react-router-dom'
@@ -39,6 +42,12 @@ class App extends Component {
         </div>
         <div className="height">
           <Route path="/partyMap" component={PartyMap} />
+        </div>
+        <div className="height">
+          <Route path="/party" component={Party} />
+        </div>
+        <div className="height">
+          <Route path="/partying" component={Partying} />
         </div>
       </div>
     );
